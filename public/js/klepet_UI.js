@@ -85,7 +85,7 @@ $(document).ready(function() {
     $('#sporocila').append(novElement);
   });
   
-  socket.on('kanali', function(kanali) {
+    socket.on('kanali', function(kanali) {
     $('#seznam-kanalov').empty();
 
     for(var kanal in kanali) {
@@ -110,6 +110,15 @@ $(document).ready(function() {
       vzdevek = $(this).text();
       $('#poslji-sporocilo').val('/zasebno'  + ' "'+vzdevek+'"').focus();
     });
+  });
+  
+  socket.on('dregljaj', function() {
+    $('#vsebina').jrumble();
+    $('#vsebina').trigger("startRumble");
+    setTimeout(function (){
+      $('#vsebina').trigger("stopRumble");
+    }, 1500);
+  
   });
 
   setInterval(function() {
