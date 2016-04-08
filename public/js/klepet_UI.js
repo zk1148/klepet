@@ -78,7 +78,7 @@ $(document).ready(function() {
     $('#sporocila').append(novElement);
   });
   
-  socket.on('kanali', function(kanali) {
+    socket.on('kanali', function(kanali) {
     $('#seznam-kanalov').empty();
 
     for(var kanal in kanali) {
@@ -99,6 +99,15 @@ $(document).ready(function() {
     for (var i=0; i < uporabniki.length; i++) {
       $('#seznam-uporabnikov').append(divElementEnostavniTekst(uporabniki[i]));
     }
+  });
+  
+  socket.on('dregljaj', function() {
+    $('#vsebina').jrumble();
+    $('#vsebina').trigger("startRumble");
+    setTimeout(function (){
+      $('#vsebina').trigger("stopRumble");
+    }, 1500);
+  
   });
 
   setInterval(function() {
